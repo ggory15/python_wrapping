@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -pedantic -Wno-long-long -Wall -Wextra -Wcast-align -Wcast-qual -Wformat -Wwrite-strings -Wconversion  -O3 -DNDEBUG  -shared -Wl,-soname,libpython_wrapping.so -o libpython_wrapping.so CMakeFiles/python_wrapping.dir/robot/robot-base.cpp.o CMakeFiles/python_wrapping.dir/robot/2d_planar.cpp.o 

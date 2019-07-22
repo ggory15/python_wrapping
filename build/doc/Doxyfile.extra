@@ -1,0 +1,4 @@
+INPUT                  = /home/ggory15/git/python_wrapping/include
+IMAGE_PATH             = /home/ggory15/git/python_wrapping/doc/pictures
+FILE_PATTERNS          = *.h *.idl
+

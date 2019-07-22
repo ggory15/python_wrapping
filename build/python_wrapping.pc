@@ -1,0 +1,22 @@
+prefix=/devel
+exec_prefix=/devel
+libdir=/devel/lib
+bindir=/devel/bin
+pkglibdir=/devel/lib/python_wrapping
+includedir=/devel/include
+datarootdir=/devel/share
+pkgdatarootdir=/devel/share
+docdir=/devel/share/doc/python_wrapping
+doxygendocdir=/devel/share/doc/python_wrapping/doxygen-html
+
+Name: python_wrapping
+Description: Tutorial for python binding 
+URL: http://github.com/ggory15/python_wrapping
+Version: UNKNOWN-dirty
+Requires: eigen3 >= 3.2.0, pinocchio >= 2.0.0, eigenpy >= 1.4.0
+Conflicts: 
+Libs: -L${libdir}  -lpython_wrapping
+Libs.private: 
+Cflags:  -I${includedir} -I/usr/include
+
+
