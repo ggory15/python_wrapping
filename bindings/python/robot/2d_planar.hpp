@@ -33,15 +33,26 @@ namespace invkin
 
         .add_property("name", &Robot::name)
         .def("position", &RobotPythonVisitor::position, bp::arg("joint"))
-        
+        .def("Jacobian", &RobotPythonVisitor::Jacobian, bp::arg("joint"))
+        .def("setJoint", &RobotPythonVisitor::setJoint, bp::arg("joint"))
+        .add_property("getJoint", bp::make_function(&RobotPythonVisitor::getJoint, bp::return_value_policy<bp::copy_const_reference>()))
+        //.add_property("getJoint", &Robot::getJoint)
+
         ;
       }
-       static const Eigen::VectorXd & position(Robot & self, const Eigen::VectorXd q){
-        Eigen::VectorXd pos;
-        
-        return pos;
+      static Eigen::VectorXd position(Robot & self, const Eigen::VectorXd q){
+        return self.position(q);
       }
-      
+      static Eigen::MatrixXd Jacobian(Robot & self, const Eigen::VectorXd q){
+        return self.jacobian(q);
+      }
+      static void setJoint(Robot & self, const Eigen::VectorXd q){
+        self.setJoint(q);
+      }
+      static const Eigen::VectorXd & getJoint(const Robot & self){
+        return self.getJoint();
+      }
+
       static void expose(const std::string & class_name)
       {
         std::string doc = "2d Planar info.";

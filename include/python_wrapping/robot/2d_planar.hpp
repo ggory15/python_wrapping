@@ -23,7 +23,8 @@ namespace invkin
             VectorXd velocity (const VectorXd & q, const VectorXd & v);
             MatrixXd jacobian (const VectorXd & q);
 
-            void position (const VectorXd & q, VectorXd & pos);
+            void setJoint (const VectorXd & q);
+            const VectorXd & getJoint () const;
         
         protected:
             int m_nq;

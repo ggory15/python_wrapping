@@ -19,9 +19,9 @@ namespace invkin{
         VectorXd Planar2d::position (const VectorXd & q) {
             assert (q.size() == 2);
 
-            //m_pos.setZero();
-            // m_pos(0) = 0.5 * cos(q(0)) + 1.0 * cos(q(0) + q(1));
-            // m_pos(1) = 0.5 * sin(q(0)) + 1.0 * sin(q(0) + q(1));
+            m_pos.setZero();
+            m_pos(0) = 0.5 * cos(q(0)) + 1.0 * cos(q(0) + q(1));
+            m_pos(1) = 0.5 * sin(q(0)) + 1.0 * sin(q(0) + q(1));
 
             return m_pos;
         }
@@ -33,20 +33,21 @@ namespace invkin{
         }
         MatrixXd Planar2d::jacobian (const VectorXd & q)  {
             assert (q.size() == 2);
-            // m_J.setZero();
+            m_J.setZero();
 
-            // m_J(0, 0) = -0.5 * sin(q(0)) -1.0 * sin(q(0) + q(1));
-            // m_J(0, 1) = -1.0 * sin(q(0) + q(1));
-            // m_J(1, 0) = 0.5 * cos(q(0)) + 1.0 * cos(q(0) + q(1));
-            // m_J(1, 1) = 1.0 * cos(q(0) + q(1));
+            m_J(0, 0) = -0.5 * sin(q(0)) -1.0 * sin(q(0) + q(1));
+            m_J(0, 1) = -1.0 * sin(q(0) + q(1));
+            m_J(1, 0) = 0.5 * cos(q(0)) + 1.0 * cos(q(0) + q(1));
+            m_J(1, 1) = 1.0 * cos(q(0) + q(1));
 
             return m_J;
         }
 
-        void Planar2d::position (const VectorXd & q, VectorXd & pos){
-            assert (q.size() == 2);
-            assert (pos.size() == 2);
-            pos = position(q);
+        void Planar2d::setJoint (const VectorXd & q){
+            m_q = q;
+        }
+        const VectorXd & Planar2d::getJoint () const {
+            return m_q;   
         }
     }
 }
